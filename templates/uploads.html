@@ -1,0 +1,156 @@
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Final Project</title>
+</head>
+<body>
+<main role="main" class=container>
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">App Details</div>
+            </div>
+            <div class="panel-body">
+                <form method="post" action=".">
+                    <form class="form-horizontal" method="post" action=".">
+                        <div class=" form-group mb-3">
+                            <div class=" form-group-prepend">
+                                <label class=" form-group-text" for=" formGroupSelect01">App Name:</label>
+                            </div>
+                            <input type="text" name="appname" class="form-control" aria-label="Sizing example input"
+                                   aria-describedby=" formGroup-sizing-default">
+                        </div>
+                        <div class=" form-group mb-3">
+                            <div class=" form-group-prepend">
+                                <label class=" form-group-text" for=" formGroupSelect01">Category:</label>
+                            </div>
+                            <select name="category" class="form-control" id="category">
+                                <option value="0">ART AND DESIGN</option>
+                                <option value="1">AUTO AND VEHICLES</option>
+                                <option value="2">BEAUTY</option>
+                                <option value="3">BOOKS AND REFERENCE</option>
+                                <option value="4">BUSINESS</option>
+                                <option value="5">COMICS</option>
+                                <option value="6">COMMUNICATION</option>
+                                <option value="7">DATING</option>
+                                <option value="8">EDUCATION</option>
+                                <option value="9">ENTERTAINMENT</option>
+                                <option value="10">EVENTS</option>
+                                <option value="11">FINANCE</option>
+                                <option value="12">FOOD AND DRINK</option>
+                                <option value="13">HEALTH AND FITNESS</option>
+                                <option value="14">HOUSE AND HOME</option>
+                                <option value="15">LIBRARIES AND DEMO</option>
+                                <option value="16">LIFESTYLE</option>
+                                <option value="17">GAME</option>
+                                <option value="18">FAMILY</option>
+                                <option value="19">MEDICAL</option>
+                                <option value="20">SOCIAL</option>
+                                <option value="21">SHOPPING</option>
+                                <option value="22">PHOTOGRAPHY</option>
+                                <option value="23">SPORTS</option>
+                                <option value="24">TRAVEL AND LOCAL</option>
+                                <option value="25">TOOLS</option>
+                                <option value="26">PERSONALIZATION</option>
+                                <option value="27">PRODUCTIVITY</option>
+                                <option value="28">PARENTING</option>
+                                <option value="29">WEATHER</option>
+                                <option value="30">VIDEO PLAYERS</option>
+                                <option value="31">NEWS AND MAGAZINES</option>
+                                <option value="32">MAPS AND NAVIGATION</option>
+                            </select>
+                        </div>
+                        <div class=" form-group mb-3">
+                            <div class=" form-group-prepend">
+                                <label class=" form-group-text" for=" formGroupSelect01">Size(in MB):</label>
+                            </div>
+                            <input type="number" , name="size" , step=".01" class="form-control"
+                                   aria-label="Sizing example input"
+                                   aria-describedby=" formGroup-sizing-default">
+                        </div>
+                        <div class="form-group required mb-3">
+                            <div class="form-group-prepend">
+                                <label class=" form-group-text" for=" formGroupSelect01">Price:</label>
+                            </div>
+                            <input type="number" , name="price" , step=".01" class="form-control"
+                                   aria-label="Sizing example input"
+                                   aria-describedby=" formGroup-sizing-default">
+                        </div>
+                        <div class=" form-group mb-3">
+                            <div class=" form-group-prepend">
+                                <label class=" form-group-text" for=" formGroupSelect01">Content Rating</label>
+                            </div>
+                            <select name="con_rate" class="form-control" id="con_rate">
+                                <option value="0">EVERYONE</option>
+                                <option value="2">EVERYONE 10+</option>
+                                <option value="1">TEEN</option>
+                                <option value="3">Mature 17+</option>
+                                <option value="4">ADULTS ONLY</option>
+                                <option value="5">UNRATED</option>
+                            </select>
+                        </div>
+                    <div class=" form-group mb-3">
+                            <div class=" form-group-prepend">
+                                <label class=" form-group-text" for=" formGroupSelect01">Genre:</label>
+                            </div>
+                            <select name="genre" class="form-control" id="genre">
+                                {% for genre in posts %}
+                                <option value="{{ genre.value }}">{{ genre.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class=" form-group mb-3">
+                            <div class=" form-group-prepend">
+                                <label class=" form-group-text" for=" formGroupSelect01">Minimum Supported Android
+                                    version:</label>
+                            </div>
+                            <select name="ver" class="form-control" id="ver">
+                                <option value="1.5">Cupcake</option>
+                                <option value="1.6">Donut</option>
+                                <option value="2.1">Eclair</option>
+                                <option value="2.2">Froyo</option>
+                                <option value="2.3">Gingerbread</option>
+                                <option value="3.1">Honeycomb</option>
+                                <option value="4.0.3 ">Ice Cream Sandwich</option>
+                                <option value="4.1">Jelly Bean</option>
+                                <option value="4.4">KitKat</option>
+                                <option value="5.0">Lollipop</option>
+                                <option value="6.0">Marshmallow</option>
+                                <option value="7.1">Nougat</option>
+                                <option value="8.0">Oreo</option>
+                                <option value="9">Pie</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="aab controls col-md-4 "></div>
+                            <div class="controls col-md-8 ">
+                                <button type="submit" class="btn btn-success">Predict</button>
+                                <input type="reset" class="btn btn-secondary">
+                            </div>
+                        </div>
+                    </form>
+                </form>
+                {% if predict %}
+                 <div class=" form-group-prepend">
+
+                     <label class=" form-group-text" for=" formGroupSelect01">{{ appname }}'s Possible rating: </label>
+                 </div>
+                 <div class=" form-group-prepend">
+
+                     <label class=" form-group-text" for=" formGroupSelect01">{{ predict }}</label>
+                 </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

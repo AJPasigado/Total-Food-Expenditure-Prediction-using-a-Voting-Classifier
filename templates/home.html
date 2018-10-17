@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <title>Total Food Expenditure Prediction</title>
+</head>
+
+<body>
+  <main role = "main" class =container>
+
+      <div class="panel panel-info">
+          <div class="panel-heading">
+              <div class="panel-title">Total Food Expenditure Prediction using a Random Forest, KNeighbors, and Gradient Boosting Voting Classifier</div>
+          </div>
+          <div class="panel-body">
+              <form action="." method="post">
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Region:</label>
+                      </div>
+                      <select name="region" class="form-control" id="category">
+                          {% for region in regions %}
+                            <option value="{{ loop.index }}">{{ region }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Main Source of Income:</label>
+                      </div>
+                      <select name="income_source" class="form-control" id="category">
+                          {% for source in main_source %}
+                            <option value="{{ loop.index }}">{{ source }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Alcoholic Beverages Expenditure:</label>
+                      </div>
+                      <input type="number" , name="alc_exp" , step="0.1" class="form-control"
+                             aria-label="Sizing example input"
+                             aria-describedby=" formGroup-sizing-default">
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Housing and Water Expenditure:</label>
+                      </div>
+                      <input type="number" , name="water_exp" , step="0.1" class="form-control"
+                             aria-label="Sizing example input"
+                             aria-describedby=" formGroup-sizing-default">
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Medical Care Expenditure:</label>
+                      </div>
+                      <input type="number" , name="med_exp" , step="0.1" class="form-control"
+                             aria-label="Sizing example input"
+                             aria-describedby=" formGroup-sizing-default">
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Transportation Expenditure:</label>
+                      </div>
+                      <input type="number" , name="trans_exp" , step="0.1" class="form-control"
+                             aria-label="Sizing example input"
+                             aria-describedby=" formGroup-sizing-default">
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Communication Expenditure:</label>
+                      </div>
+                      <input type="number" , name="com_exp" , step="0.1" class="form-control"
+                             aria-label="Sizing example input"
+                             aria-describedby=" formGroup-sizing-default">
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Household Head Age:</label>
+                      </div>
+                      <input type="number" , name="head_age" , step="1" class="form-control"
+                             aria-label="Sizing example input"
+                             aria-describedby=" formGroup-sizing-default">
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Type of Household:</label>
+                      </div>
+                      <select name="household_type" class="form-control" id="category">
+                          {% for type in household_type %}
+                            <option value="{{ loop.index }}">{{ type }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+
+                  <div class=" form-group mb-3">
+                      <div class=" form-group-prepend">
+                          <label class=" form-group-text" for=" formGroupSelect01">Total Number of Family members:</label>
+                      </div>
+                      <input type="number" , name="family_size" , step="1" class="form-control"
+                             aria-label="Sizing example input"
+                             aria-describedby=" formGroup-sizing-default">
+                  </div>
+
+                  <div class="form-group">
+                      <div class="aab controls col-md-4 "></div>
+                      <div class="controls col-md-8 ">
+                          <button type="submit" class="btn btn-success">Predict</button>
+                      </div>
+                  </div>
+
+              </form>
+          </div>
+      </div>
+
+      {% if predict %}
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Prediction</div>
+            </div>
+            <h3>{{predict}}</h3>
+        </div>
+
+      {% endif %}
+      
+     
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
